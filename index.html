@@ -5,6 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harshit Gupta | Software Engineer - AI & Backend</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Harshit Gupta - Software Engineer at Extramarks Education. Specializing in Generative AI, Python, Java, and scalable backend microservices.">
+    <meta name="keywords"
+        content="Harshit Gupta, Software Engineer, AI Engineer, Backend Developer, Python FastAPI, Java Spring Boot, Generative AI, LLM Integration">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harshitgupta.netlify.app/">
+    <meta property="og:title" content="Harshit Gupta | AI & Backend Engineer">
+    <meta property="og:description" content="Leading GenAI solutions and scalable microservices. Explore my portfolio.">
+    <meta property="og:image" content="assets/images/harshit_gupta.jpeg">
+
+    <!-- LinkedIn Specific -->
+    <meta property="linkedin:owner" content="harshit-gupta-3399341a8">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,8 +36,15 @@
                     <li><a href="#projects" class="nav-item">Projects</a></li>
                     <li><a href="#skills" class="nav-item">Skills</a></li>
                     <li><a href="#education" class="nav-item">Education</a></li>
+                    <li><a href="#contact" class="nav-item">Contact</a></li>
                 </ul>
-                <a href="Harshit_Gupta_Resume.pdf" target="_blank" class="btn btn-primary">Resume PDF</a>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button id="theme-toggle" class="btn-icon" title="Toggle Dark/Light Mode">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    <span id="dynamic-calendar" title="Current Date"></span>
+                    <a href="Harshit_Gupta_Resume.pdf" target="_blank" class="btn btn-primary">Resume PDF</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -30,7 +54,8 @@
         <section class="hero">
             <div class="container hero-container">
                 <div class="hero-content animate-in">
-                    <h1>Hi, I'm <span id="typewriter"></span><span class="cursor">|</span></h1>
+                    <h1>Hi, I'm <span class="no-wrap"><span id="typewriter"></span><span class="cursor">|</span></span>
+                    </h1>
                     <p>Software Engineer at <strong>Extramarks Education</strong>. 4+ years of expertise in Python &
                         Java backend ecosystems, specializing in <strong>Generative AI solutions 🤖</strong> and
                         scalable
@@ -66,7 +91,7 @@
 
         <!-- Experience Section -->
         <section id="experience" class="container section-padding">
-            <h2 class="section-title animate-in">Career Timeline 📅</h2>
+            <h2 class="section-title animate-in">Career Timeline 📈</h2>
             <div class="timeline">
                 <!-- Extramarks -->
                 <div class="timeline-item animate-in">
@@ -109,7 +134,7 @@
         <section id="projects" class="container section-padding">
             <h2 class="section-title animate-in">Case Studies 📂</h2>
             <div class="projects-grid">
-                <!-- Project Cards (Staggered classes added via JS or manually) -->
+                <!-- Project Cards -->
                 <div class="glass-card project-card animate-in">
                     <div>
                         <span
@@ -202,16 +227,6 @@
                     </div>
                 </div>
                 <div class="glass-card animate-in">
-                    <h4 style="margin-bottom: 1.5rem; letter-spacing: 1px;">Frontend ⚛️</h4>
-                    <div class="skills-grid">
-                        <span class="skill-badge">ReactJS</span>
-                        <span class="skill-badge">HTML5</span>
-                        <span class="skill-badge">CSS3</span>
-                        <!-- <span class="skill-badge">JavaScript (ES6+)</span> -->
-                        <!-- <span class="skill-badge">Responsive Design</span> -->
-                    </div>
-                </div>
-                <div class="glass-card animate-in">
                     <h4 style="margin-bottom: 1.5rem; letter-spacing: 1px;">Cloud & Ops 🌐</h4>
                     <div class="skills-grid">
                         <span class="skill-badge">AWS Architecture</span>
@@ -245,10 +260,35 @@
                 <h3>Achievements 🏆</h3>
                 <div class="skills-grid">
                     <span class="skill-badge">🏅 AWS Certified Cloud Practitioner</span>
-                    <a href="assets/java_basic certificate.pdf" target="_blank">
-                        <span class="skill-badge" style="cursor: pointer;">🏅 HackerRank Java Certified</span>
+                    <a href="assets/java_basic certificate.pdf" target="_blank" class="skill-badge"
+                        style="text-decoration: none; cursor: pointer;">
+                        🏅 HackerRank Java Certified
                     </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (Netlify Ready) -->
+        <section id="contact" class="container section-padding">
+            <h2 class="section-title animate-in">Get In Touch ✉️</h2>
+            <div class="glass-card animate-in contact-container">
+                <p class="contact-subtitle">Have a project in mind or just want to say hi? My inbox is always open.</p>
+                <form name="contact" method="POST" action="success.html" data-netlify="true"
+                    data-netlify-honeypot="bot-field" class="contact-form">
+                    <!-- Hidden field for Netlify Bot Protection -->
+                    <p style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Full Name" required class="form-input">
+                        <input type="email" name="email" placeholder="Email Address" required class="form-input">
+                    </div>
+                    <input type="text" name="subject" placeholder="Subject" required class="form-input">
+                    <textarea name="message" placeholder="Your Message" rows="6" required class="form-input"></textarea>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">Send Message 🚀</button>
+                    </div>
+                </form>
             </div>
         </section>
     </main>
