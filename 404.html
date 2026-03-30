@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Harshit Gupta</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .error-container {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 8rem;
+            margin-bottom: 0;
+            background: linear-gradient(90deg, var(--text-primary), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container glass-card">
+        <h1>404</h1>
+        <p>Oops! It looks like you've ventured into uncharted territory. 🌌</p>
+        <a href="index.html" class="btn btn-primary">Back to Reality</a>
+    </div>
+
+    <script>
+        // Apply theme on 404 page too
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</body>
+
+</html>
