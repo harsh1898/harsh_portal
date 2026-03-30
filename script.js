@@ -192,15 +192,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
     // Header transparency on scroll
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         if (window.scrollY > 50) {
-            header.style.background = 'rgba(241, 245, 249, 0.95)';
-            header.style.boxShadow = '0 10px 40px rgba(0,0,0,0.08)';
+            header.style.background = isDark ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = '0 10px 40px rgba(0,0,0,0.15)';
             header.style.height = '70px';
         } else {
-            header.style.background = 'rgba(226, 232, 240, 0.8)';
+            header.style.background = 'transparent';
             header.style.boxShadow = 'none';
             header.style.height = '80px';
         }
@@ -211,9 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameText = "Harshit Gupta.";
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 150;
+    let typeSpeed = 200;
 
     function type() {
+        if (!typewriterElement) return;
         const currentText = typewriterElement.textContent;
 
         if (isDeleting) {
@@ -228,22 +253,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!isDeleting && charIndex === nameText.length) {
             isDeleting = true;
-            typeSpeed = 2000; // Pause at the end
+            typeSpeed = 2000;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
-            typeSpeed = 500; // Pause before restarting
+            typeSpeed = 500;
         }
-
         setTimeout(type, typeSpeed);
     }
 
-    if (typewriterElement) {
-        type();
-    }
+    type();
 
     // Dynamic Current Year
     const yearElement = document.getElementById('current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
+
+    // Dynamic Calendar Date
+    const calendarElement = document.getElementById('dynamic-calendar');
+    if (calendarElement) {
+        const now = new Date();
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const month = monthNames[now.getMonth()];
+        const day = now.getDate();
+
+        calendarElement.innerHTML = `
+            <div class="calendar-badge">
+                <div class="month">${month}</div>
+                <div class="day">${day}</div>
+            </div>
+        `;
+    }
+
+    // Interactive Mouse Glow (Luxury Feature)
+    document.addEventListener('mousemove', (e) => {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        const { left, top, width, height } = hero.getBoundingClientRect();
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+        hero.style.setProperty('--mouse-x', `${x}%`);
+        hero.style.setProperty('--mouse-y', `${y}%`);
+    });
 });
